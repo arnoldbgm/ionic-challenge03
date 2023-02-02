@@ -11,7 +11,7 @@
         Name
         <ion-text color="danger">*</ion-text>
       </ion-label>
-      <ion-input formControlName="username" required></ion-input>
+      <ion-input formControlName="username" class="red" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">
@@ -22,6 +22,7 @@
     </ion-item>
     <ion-button
       routerLink="/main-pg"
+      size="full"
       (click)="onSubmit()"
       [disabled]="myForm.invalid"
     >
@@ -29,19 +30,3 @@
     </ion-button>
   </form>
 </ion-content>
-
-{{myForm.value | json }}
-
-<!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <ion-item>
-    <ion-label position="floating">E-Mail <ion-text color="danger">*</ion-text></ion-label>
-    <ion-input required formControlName="email" type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Password <ion-text color="danger">*</ion-text></ion-label>
-    <ion-input required formControlName="password" type="text"></ion-input>
-  </ion-item>
-  <ion-button block color="primary" type="submit" [disabled]="loginForm.invalid">
-    Login
-  </ion-button>
-</form> -->

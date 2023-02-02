@@ -12,15 +12,18 @@ export class HomePage {
   }
 
   datos: any;
+  validator: any = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
+  validatorName: any = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
 
   myForm = new FormGroup({
-    username: new FormControl('', Validators.required),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.pattern(this.validatorName),
+    ]),
     email: new FormControl('', [
       Validators.required,
-      // Validators.pattern(
-      //   '/^([a-zA-Z0-9_.]+)@([a-zA-Z0-9_.]+).([a-zA-Z]{2,5})$'
-      // ),
-      Validators.email
+      Validators.pattern(this.validator),
+      Validators.email,
     ]),
   });
 
