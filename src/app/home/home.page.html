@@ -20,14 +20,14 @@
       </ion-label>
       <ion-input formControlName="email"></ion-input>
     </ion-item>
-    <ion-button
-      routerLink="/main-pg"
-      size="full"
-      (click)="onSubmit()"
-      [disabled]="myForm.invalid"
-    >
-      <!-- [attr.color]="myForm.invalid === true ?  'danger' : 'primary' " -->
+    <ion-button size="full" (click)="onSubmit()" [disabled]="myForm.invalid">
       Login
+    </ion-button>
+    <ion-button size="full" (click)="onSubmitPage2()" [disabled]="myForm.invalid">
+      Login 2 Parms
+    </ion-button>
+    <ion-button size="full" (click)="onSubmitPage3()" [disabled]="myForm.invalid">
+      Login 3 service
     </ion-button>
   </form>
 </ion-content>
