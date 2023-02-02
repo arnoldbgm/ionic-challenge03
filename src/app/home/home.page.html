@@ -5,20 +5,20 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form [formGroup]="myForm">
-    <ion-item>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-item [ngClass]="{'ion-item': myForm.get('username')?.invalid}">
       <ion-label position="floating">
         Name
         <ion-text color="danger">*</ion-text>
       </ion-label>
-      <ion-input formControlName="username" class="red" required></ion-input>
+      <ion-input formControlName="username"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item [ngClass]="{'ion-item': myForm.get('email')?.invalid}">
       <ion-label position="floating">
         E-Mail
         <ion-text color="danger">*</ion-text>
       </ion-label>
-      <ion-input formControlName="email" required></ion-input>
+      <ion-input formControlName="email"></ion-input>
     </ion-item>
     <ion-button
       routerLink="/main-pg"
@@ -26,6 +26,7 @@
       (click)="onSubmit()"
       [disabled]="myForm.invalid"
     >
+      <!-- [attr.color]="myForm.invalid === true ?  'danger' : 'primary' " -->
       Login
     </ion-button>
   </form>

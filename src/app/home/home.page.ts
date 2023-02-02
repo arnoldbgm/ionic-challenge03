@@ -23,7 +23,6 @@ export class HomePage {
     email: new FormControl('', [
       Validators.required,
       Validators.pattern(this.validator),
-      Validators.email,
     ]),
   });
 
