@@ -12,7 +12,9 @@ export class HomePage {
   constructor(private router: Router, private shared: ShareDataService) {}
 
   datos: any;
-  validator: any = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
+  optionBtn: boolean = false;
+  passwordIcon: boolean = false;
+  passwordType: string = 'password';
   validatorName: any = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
 
   myForm = new FormGroup({
@@ -20,29 +22,28 @@ export class HomePage {
       Validators.required,
       Validators.pattern(this.validatorName),
     ]),
-    email: new FormControl('', [
-      Validators.required,
-      Validators.pattern(this.validator),
-    ]),
+    password: new FormControl('', [Validators.required]),
+    optionBtn: new FormControl(),
   });
 
   onSubmit() {
     this.datos = this.myForm.value;
     localStorage.setItem('form', JSON.stringify(this.datos));
+    if (this.datos.optionBtn) {
+      this.router.navigateByUrl('/main-pg');
+      return;
+    }
     this.myForm.reset();
     this.router.navigateByUrl('/main-pg');
   }
 
-  onSubmitPage2() {
-    this.datos = this.myForm.value;
-    this.router.navigateByUrl(
-      `/second-pg/${this.datos.username}/${this.datos.email}`
-    );
-  }
-
-  onSubmitPage3() {
-    this.datos = this.myForm.value;
-    this.shared.setData(this.datos);
-    this.router.navigateByUrl('/third-pg');
+  showPassword() {
+    if (this.passwordType === 'text') {
+      this.passwordIcon = false;
+      this.passwordType = 'password';
+    } else {
+      this.passwordIcon = true;
+      this.passwordType = 'text';
+    }
   }
 }

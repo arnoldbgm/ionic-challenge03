@@ -12,21 +12,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/main-pg/main-pg.module').then((m) => m.MainPgPageModule),
   },
-
-  {
-    path: 'second-pg/:username/:email',
-    loadChildren: () =>
-      import('./pages/second-pg/second-pg.module').then(
-        (m) => m.SecondPgPageModule
-      ),
-  },
-  {
-    path: 'third-pg',
-    loadChildren: () =>
-      import('./pages/third-pg/third-pg.module').then(
-        (m) => m.ThirdPgPageModule
-      ),
-  },
   {
     path: '',
     redirectTo: 'home',
